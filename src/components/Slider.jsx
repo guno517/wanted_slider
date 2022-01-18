@@ -141,14 +141,14 @@ const Carousel = () => {
         } else {
             setCurrentSlide(currentSlide + 1)
         }*/
-        let outerSlide = currentSlide % totalSlides; // 마지막 사진 -> 첫번째 사진으로 이어지는 슬라이더
+        //let outerSlide = currentSlide % totalSlides; // 마지막 사진 -> 첫번째 사진으로 이어지는 슬라이더
     }
     const handlePrev = () => {
         setCurrentSlide(currentSlide - 1);
         if (currentSlide === 0) {
             setCurrentSlide(totalSlides - 1)
         }
-        let outerSlide = currentSlide % totalSlides; // 첫번째 사진 -> 마지막 사진으로 이어지는 슬라이더
+        //let outerSlide = currentSlide % totalSlides; // 첫번째 사진 -> 마지막 사진으로 이어지는 슬라이더
     };
 
     const handleMouseEnter = () => setIsFocused(true);
@@ -164,7 +164,7 @@ const Carousel = () => {
         return () => {
             clearInterval(intervalId);
         };
-    }, [isFocused]);
+    }, [handleNext, isFocused]);
 
     return (
         <Base>
