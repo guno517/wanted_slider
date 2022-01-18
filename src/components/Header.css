@@ -1,0 +1,166 @@
+.Mainbar {
+    z-index: 100;
+    width: 100%;
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px 0px 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+@media (min-width: 1200px){
+    .Header {
+        position:relative;
+        width: 90%;
+        margin: 0 auto;
+        max-width: 1060px;
+    }   
+    .Main {
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .MenuList {
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+}
+
+@media screen and (min-width:1086px) and (max-width:1199px) {
+    .Header {
+        margin: 0 auto;
+        max-width: 1060px;
+        width: 100%;
+    }
+    .Main {
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        width: 100%;
+    }
+    .Navigation {
+        display: flex;
+    }
+    .MenuList {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width:760px) and (max-width:1085px) {
+    .Header {
+        margin: 0 auto;
+        max-width: 1060px;
+        width: 90%;
+        position: relative;
+    }
+    .Main {
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .Navigation {
+        display: flex;
+        align-items: center;
+        height: 60px;
+    }
+    .MenuList {
+        justify-content: flex-start;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    .Menu:not(:first-child) {
+        margin: 0;
+    }
+    .ServiceButton {
+        display: none;
+    }
+    aside {
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.NavBarWrapper {
+    display: flex;
+}
+
+.NavBar {
+    margin-top: 10px;
+    cursor: pointer;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.Logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.MenuListWrapper {
+    text-align: center;
+}
+
+.Menu {
+    font-weight: 700;
+    float: left;
+}
+
+.Menu:not(:first-child){
+    margin: 0 0 0 24px;
+}
+
+em {
+    position: relative;
+    pointer-events: none;
+    top: -10px;
+    margin-right: auto;
+    font-size: 10px;
+    color: blue;
+}
+
+.AddOns {
+    display: flex;
+}
+
+.SearchIcon {
+    position: relative;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+.BellIcon {
+    position: relative;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+.UserIcon {
+    position: relative;
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+.Service {
+    border-radius: 15px;
+    padding: 3px 8px;
+    background: white;
+}
+
+.ServiceButton::before {
+    content: "|";
+    margin: 0 8px;
+}
