@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from '@emotion/styled/macro';
 import { css } from '@emotion/react';
 
@@ -134,7 +134,7 @@ const Carousel = () => {
     const totalSlides = banners.length;
     const slideRef = useRef();
 
-    const handleNext = () => {
+    const handleNext = useCallback(() => {
         setCurrentSlide(currentSlide => (currentSlide + 1) % totalSlides);
         /*if (currentSlide >= totalSlides - 1) {
             setCurrentSlide(0)
@@ -142,7 +142,7 @@ const Carousel = () => {
             setCurrentSlide(currentSlide + 1)
         }*/
         //let outerSlide = currentSlide % totalSlides; // 마지막 사진 -> 첫번째 사진으로 이어지는 슬라이더
-    }
+    },[totalSlides])
     const handlePrev = () => {
         setCurrentSlide(currentSlide - 1);
         if (currentSlide === 0) {
@@ -164,7 +164,7 @@ const Carousel = () => {
         return () => {
             clearInterval(intervalId);
         };
-    }, [isFocused]);
+    }, [handleNext, isFocused]);
 
     return (
         <Base>
