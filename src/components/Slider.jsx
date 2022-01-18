@@ -158,13 +158,13 @@ const Carousel = () => {
         let intervalId;
 
         if (!isFocused) {
-            intervalId = setInterval(handleNext, 5000);
+            intervalId = setInterval(handleNext, 3000);
         }
 
         return () => {
             clearInterval(intervalId);
         };
-    }, [handleNext, isFocused]);
+    }, [isFocused]);
 
     return (
         <Base>
