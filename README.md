@@ -1,5 +1,6 @@
-# Getting Started with Create React App
+# 원티드 프리온보딩 코스
 
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # wanted_pre_onboarding
+
+# url
+ - 
