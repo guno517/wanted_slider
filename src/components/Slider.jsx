@@ -89,10 +89,13 @@ const InfoBox = styled.div`
     @media screen and (max-width:1199px){
         position: relative;
         top: 0;
+        width: 100%;
         text-align: center;
-        width: 90%;
+        justify-content: center;
+        max-width: 100%;
         margin: 0;
         padding: 0;
+        left: 0;
         hr{
             display: none;
         }
@@ -156,7 +159,7 @@ const Carousel = () => {
         let intervalId;
 
         if (!isFocused) {
-            intervalId = setInterval(handleNext, 5000);
+            //intervalId = setInterval(handleNext, 5000);
         }
 
         return () => {
