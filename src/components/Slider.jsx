@@ -6,7 +6,7 @@ const Base = styled.div`
     width: 100%;
     overflow: hidden;
     @media screen and (max-width:1085px){
-        width: 90%;
+        border-top: 1px solid rgb(0 0 0 / 30%);
     }
 `
 
@@ -70,11 +70,9 @@ const CarouselListItem = styled.li`
 const CarouselImage = styled.img`
     border-radius: 10px;
     @media screen and (max-width:1199px){
-        width: 1040px;
+        width: inherit;
+        max-width: 100%;
         height: 183px;
-        object-fit: none;
-    }
-    @media screen and (min-width:760px) and (max-width:1085px) {
     }
 `;
 
@@ -158,7 +156,7 @@ const Carousel = () => {
         let intervalId;
 
         if (!isFocused) {
-            intervalId = setInterval(handleNext, 3000);
+            intervalId = setInterval(handleNext, 5000);
         }
 
         return () => {
