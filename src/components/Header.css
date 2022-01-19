@@ -68,7 +68,7 @@ ul {
     }
 }
 
-@media screen and (min-width:871px) and (max-width:1085px) {
+@media screen and (min-width:898px) and (max-width:1085px) {
     .Mainbar{
         box-shadow: rgb(0 0 0 / 30%) 0px 0px 0px 0px;
     }
@@ -115,7 +115,7 @@ ul {
     }
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 897px) {
     .Mainbar {
         box-shadow: rgb(0 0 0 / 30%) 0px 0px 0px 0px;
     }
