@@ -3,4 +3,4 @@
 # wanted_pre_onboarding
 
 # url
- - 
+ - https://githubcomguno517wanted-pre-onboarding.netlify.app/
