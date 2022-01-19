@@ -135,30 +135,21 @@ const banners = [
     ['https://static.wanted.co.kr/images/banners/1435/6cdcea85.jpg', "성과를 내는 마케팅", "실제 사례를 공개합니다!"], // 5
 ];
 
-
 const Carousel = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const [isFocused, setIsFocused] = useState(false);
-    //const [needTransition, setNeedTransition] = useState(true);
 
     const totalSlides = banners.length;
     const slideRef = useRef();
 
     const handleNext = useCallback(() => {
         setCurrentSlide(currentSlide => (currentSlide + 1) % totalSlides);
-        /*if (currentSlide >= totalSlides - 1) {
-            setCurrentSlide(0)
-        } else {
-            setCurrentSlide(currentSlide + 1)
-        }*/
-        //let outerSlide = currentSlide % totalSlides; // 마지막 사진 -> 첫번째 사진으로 이어지는 슬라이더
     },[totalSlides])
     const handlePrev = () => {
         setCurrentSlide(currentSlide - 1);
         if (currentSlide === 0) {
             setCurrentSlide(totalSlides - 1)
         }
-        //let outerSlide = currentSlide % totalSlides; // 첫번째 사진 -> 마지막 사진으로 이어지는 슬라이더
     };
 
     const handleMouseEnter = () => setIsFocused(true);
@@ -175,65 +166,12 @@ const Carousel = () => {
             clearInterval(intervalId);
         };
     }, [handleNext, isFocused]);
-    
-    /*
-    useEffect(() => { // 마우스를 슬라이더 위에 올려놨다가 내려놓으면 다음 슬라이더로 넘어감 (슬라이더 드래그 임시 방편용)
-        if (!isFocused)
-            handleNext();
-    }, [handleNext, isFocused])
-    */
-    /*
-    const [isDrag, setIsDrag] = useState(false); // 마우스 드래그로 슬라이드 움직이기
-    const [startX, setStartX] = useState();
-
-    const throttle = (func, ms) => {
-        let throttled = false;
-        return (...args) => {
-            if (!throttled) {
-                throttled = true;
-                setTimeout(() => {
-                    func(...args);
-                    throttled = false;
-                }, ms)
-            }
-        }
-    }
-
-    const onDragStart = (e) => {
-        console.log(slideRef)
-        const { scrollLeft } = slideRef.current;
-
-        e.preventDefault();
-        setIsDrag(true);
-        setStartX(e.pageX + scrollLeft);
-    }
-
-    const onDragEnd = () => {
-        setIsDrag(false)
-    }
-
-    const onDragMove = (e) => {
-        if (isDrag) {
-            const { scrollWidth, clientWidth, scrollLeft } = slideRef.current;
-            slideRef.current.scrollLeft = startX - e.pageX;
-            if (scrollLeft === 0) {
-                setStartX(e.pageX);
-            } else if (scrollWidth <= clientWidth + scrollLeft) {
-                setStartX(e.pageX + scrollLeft);
-            }
-        }
-    }
-    
-    const delay = 100;
-    const onThrottleDragMove = throttle(onDragMove, delay);*/
-
     return (
         <Base>
             <Container>
                 <CarouselList className='CarouselList'
                     onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-                    //onMouseDown={onDragStart} onMouseMove={onThrottleDragMove}
-                    //onMouseUp={onDragEnd}
+
                     ref = {slideRef}
                 >
                 {banners.length && <ArrowButton pos="left" onClick={handlePrev}>
