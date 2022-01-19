@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from '@emotion/styled/macro';
 import { css } from '@emotion/react';
-import slider from 'react-slick/lib/slider';
 
 const Base = styled.div`
     width: 100%;
