@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import styled from '@emotion/styled/macro';
 import { css } from '@emotion/react';
+import slider from 'react-slick/lib/slider';
 
 const Base = styled.div`
     width: 100%;
@@ -35,16 +36,25 @@ const ArrowButton = styled.button`
     opacity: 0.5;
     color: #000;
     cursor: pointer;
-    @media screen and (max-width:1199px){
-        display: none;
-    }
     ${({ pos }) => pos === 'left' ? 
+        css`
+        left: calc((100% - 1210px)/2);
+        ` : 
+        css`
+        right: calc((100% - 1210px)/2);
+        `
+    };
+    @media screen and (max-width:1199px){
+        top: 20%;
+        ${({ pos }) => pos === 'left' ? 
             css`
-            left: calc((100% - 1210px)/2);
+            left: 0;
             ` : 
             css`
-            right: calc((100% - 1210px)/2);
-            `};
+            right: 0;
+            `
+        }
+    }
 `;
 
 const CarouselList = styled.ul`
@@ -155,7 +165,7 @@ const Carousel = () => {
     const handleMouseEnter = () => setIsFocused(true);
     const handleMouseLeave = () => setIsFocused(false);
 
-     useEffect(() => { // 슬라이더 자동으로 옮겨지는 함수
+    useEffect(() => { // 슬라이더 자동으로 옮겨지는 함수
         let intervalId;
 
         if (!isFocused) {
@@ -166,11 +176,67 @@ const Carousel = () => {
             clearInterval(intervalId);
         };
     }, [handleNext, isFocused]);
+    
+    /*
+    useEffect(() => { // 마우스를 슬라이더 위에 올려놨다가 내려놓으면 다음 슬라이더로 넘어감 (슬라이더 드래그 임시 방편용)
+        if (!isFocused)
+            handleNext();
+    }, [handleNext, isFocused])
+    */
+    /*
+    const [isDrag, setIsDrag] = useState(false); // 마우스 드래그로 슬라이드 움직이기
+    const [startX, setStartX] = useState();
+
+    const throttle = (func, ms) => {
+        let throttled = false;
+        return (...args) => {
+            if (!throttled) {
+                throttled = true;
+                setTimeout(() => {
+                    func(...args);
+                    throttled = false;
+                }, ms)
+            }
+        }
+    }
+
+    const onDragStart = (e) => {
+        console.log(slideRef)
+        const { scrollLeft } = slideRef.current;
+
+        e.preventDefault();
+        setIsDrag(true);
+        setStartX(e.pageX + scrollLeft);
+    }
+
+    const onDragEnd = () => {
+        setIsDrag(false)
+    }
+
+    const onDragMove = (e) => {
+        if (isDrag) {
+            const { scrollWidth, clientWidth, scrollLeft } = slideRef.current;
+            slideRef.current.scrollLeft = startX - e.pageX;
+            if (scrollLeft === 0) {
+                setStartX(e.pageX);
+            } else if (scrollWidth <= clientWidth + scrollLeft) {
+                setStartX(e.pageX + scrollLeft);
+            }
+        }
+    }
+    
+    const delay = 100;
+    const onThrottleDragMove = throttle(onDragMove, delay);*/
 
     return (
         <Base>
             <Container>
-            <CarouselList className='CarouselList' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <CarouselList className='CarouselList'
+                    onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+                    //onMouseDown={onDragStart} onMouseMove={onThrottleDragMove}
+                    //onMouseUp={onDragEnd}
+                    ref = {slideRef}
+                >
                 {banners.length && <ArrowButton pos="left" onClick={handlePrev}>
                         <svg className="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
                             <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
@@ -178,7 +244,7 @@ const Carousel = () => {
                 </ArrowButton>}
                 {
                     banners.map((value, index) => (
-                        <CarouselListItem className='CarouselListItem' currentSlide={currentSlide} key={index} ref={slideRef}>
+                        <CarouselListItem className='CarouselListItem' currentSlide={currentSlide} key={index} >
                             <CarouselImage src={value[0]} alt="/" />
                                 <InfoBox>
                                     <BannerTitle>{value[1]}</BannerTitle>
