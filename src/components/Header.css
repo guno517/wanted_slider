@@ -21,11 +21,19 @@ ul {
         align-items: center;
         justify-content: space-between;
     }
-
+    .Home {
+        display: none;
+    }
     .MenuList {
         padding: 0;
         margin: 0;
         display: flex;
+    }
+    .ThreeDots {
+        position: relative;
+        margin-top: 5px;
+        padding: 0 10px;
+        display: none;
     }
 }
 
@@ -49,9 +57,21 @@ ul {
         padding: 0;
         text-align: center;
     }
+    .Home {
+        display: none;
+    }
+    .ThreeDots {
+        position: relative;
+        margin-top: 5px;
+        padding: 0 10px;
+        display: none;
+    }
 }
 
-@media screen and (min-width:760px) and (max-width:1085px) {
+@media screen and (min-width:871px) and (max-width:1085px) {
+    .Mainbar{
+        box-shadow: rgb(0 0 0 / 30%) 0px 0px 0px 0px;
+    }
     .Header {
         margin: 0 auto;
         max-width: 1060px;
@@ -74,16 +94,88 @@ ul {
         margin: 0;
         padding: 0;
     }
+    .Home {
+        display: none;
+    }
+    .AddOns {
+        margin-top: 0;
+        float: right;
+    }
     .Menu:not(:first-child) {
         margin: 0;
     }
     .ServiceButton {
         display: none;
     }
-    aside {
-        display: inline;
-        margin: 0;
+    .ThreeDots {
+        position: relative;
+        margin-top: 5px;
+        padding: 0 10px;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .Mainbar {
+        box-shadow: rgb(0 0 0 / 30%) 0px 0px 0px 0px;
+    }
+    .Header{
+        margin: 0 20px;
+    }
+    .MenuList {
         padding: 0;
+    }
+    .Home {
+        display: none;
+    }
+    .AddOns {
+        justify-content: flex-end;
+    }
+    .ServiceButton {
+        display: none;
+    }
+    .ThreeDots {
+        position: relative;
+        margin-top: 5px;
+        padding: 0 10px;
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .Mainbar {
+        box-shadow: rgb(0 0 0 / 30%) 0px 0px 0px 0px;
+    }
+
+    .Header {
+        margin: 0 20px;
+    }
+    .MenuList {
+        padding: 0;
+    }
+    .Home {
+        display: block;
+    }
+    .hidden800 {
+        display: none;
+    }
+    .AddOns {
+        justify-content: flex-end;
+    }
+    .ServiceButton {
+        display: none;
+    }
+    .UserIcon{
+        display: none;
+    }
+    .BellIcon{
+        display: none;
+    }
+    .ThreeDots {
+        position: relative;
+        margin-top: 5px;
+        padding: 0 10px;
+        display: block;
     }
 }
 
